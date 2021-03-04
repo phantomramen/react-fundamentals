@@ -1,4 +1,5 @@
 // TypeScript with React
+// 💯 default prop values
 // http://localhost:3000/isolated/final/05.js
 import * as React from 'react'
 
@@ -12,11 +13,11 @@ const operations: Record<Operator, MathFn> = {
 }
 
 type CalculatorProps = {
-  left: number
-  right: number
-  operator: Operator
+  left?: number
+  right?: number
+  operator?: Operator
 }
-function Calculator({left, right, operator}: CalculatorProps) {
+function Calculator({left = 0, right = 0, operator = '+'}: CalculatorProps) {
   const result = operations[operator](left, right)
   return (
     <div>
@@ -31,10 +32,10 @@ function App() {
   return (
     <div>
       <h1>Calculator</h1>
-      <Calculator left={1} operator="+" right={2} />
-      <Calculator left={1} operator="-" right={2} />
-      <Calculator left={1} operator="*" right={2} />
-      <Calculator left={1} operator="/" right={2} />
+      <Calculator left={1} right={2} />
+      <Calculator />
+      <Calculator left={1} operator="*" />
+      <Calculator operator="/" right={2} />
     </div>
   )
 }

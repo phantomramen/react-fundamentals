@@ -1,16 +1,23 @@
 // TypeScript with React
-// http://localhost:3000/isolated/exercise/05.js
-
+// 💯
+// http://localhost:3000/isolated/final/05.js
 import * as React from 'react'
 
-const operations = {
+type MathFn = (left: number, right: number) => number
+type Operator = '+' | '-' | '/' | '*'
+const operations: Record<Operator, MathFn> = {
   '+': (left, right) => left + right,
   '-': (left, right) => left - right,
   '*': (left, right) => left * right,
   '/': (left, right) => left / right,
 }
 
-function Calculator({left, right, operator}) {
+type CalculatorProps = {
+  left: number
+  right: number
+  operator: Operator
+}
+function Calculator({left, right, operator}: CalculatorProps) {
   const result = operations[operator](left, right)
   return (
     <div>
